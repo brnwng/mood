@@ -39,3 +39,5 @@ Connect to PlanetScale
 
 Check db
 `npx prisma studio`
+
+test
