@@ -35,4 +35,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## PlanetScale
 Connect to PlanetScale
-`pscale connect moode dev --port 3309`
+`pscale connect mood dev --port 3309`
+
+Check db
+`npx prisma studio`
