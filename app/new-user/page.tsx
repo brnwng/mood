@@ -1,5 +1,5 @@
 import { currentUser } from '@clerk/nextjs';
-import { prisma } from '../utils/db';
+import { prisma } from '@/utils/db';
 import { redirect } from 'next/navigation';
 
 const createNewUser = async () => {
