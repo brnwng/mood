@@ -3,29 +3,27 @@ import { prisma } from '@/utils/db';
 import { redirect } from 'next/navigation';
 
 const createNewUser = async () => {
-    const user = await currentUser();
-    const match = await prisma.user.findUnique({
-        where: {
-            clerkId: user?.id,
-        },
-    })
+  const user = await currentUser();
+  const match = await prisma.user.findUnique({
+    where: {
+      clerkId: user?.id,
+    },
+  });
 
-    if (!match) {
-        const newUser = await prisma.user.create({
-            data: {
-                clerkId: user?.id,
-                email: user?.emailAddresses[0].emailAddress,
-            }
-        })
-    }
+  if (!match) {
+    const newUser = await prisma.user.create({
+      data: {
+        clerkId: user?.id,
+        email: user?.emailAddresses[0].emailAddress,
+      },
+    });
+  }
 
-    redirect('/journal')
-}
-
-
+  redirect('/journal');
+};
 
 const NewUser = async () => {
-    await createNewUser();
-    return <div>...loading</div>
-}
-export default NewUser
+  await createNewUser();
+  return <div>...loading</div>;
+};
+export default NewUser;
