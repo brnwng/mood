@@ -3,18 +3,22 @@ import { StructuredOutputParser } from 'langchain/output_parsers';
 import { z } from 'zod';
 import { PromptTemplate } from 'langchain/prompts';
 
-export const parser = StructuredOutputParser.fromZodSchema(
+const parser = StructuredOutputParser.fromZodSchema(
   z.object({
     mood: z
       .string()
       .describe('the mood of the person who wrote the journal entry.'),
-    subject: z.string().describe('subject of journal entry.'),
+    subject: z.string().describe('the subject of the journal entry.'),
+    negative: z
+      .boolean()
+      .describe(
+        'is the journal entry negative? (i.e. does it contain negative emotions?).',
+      ),
     summary: z.string().describe('quick summary of the entire entry.'),
-    negative: z.boolean().describe('does it contain negative emotions?'),
     color: z
       .string()
       .describe(
-        'a hexidecimal color code that represents mood of the entry. Example #00ff00 is the color of happiness.',
+        'a hexidecimal color code that represents the mood of the entry. Example #0101fe for blue representing happiness.',
       ),
   }),
 );
