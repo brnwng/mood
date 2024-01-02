@@ -11,10 +11,16 @@ const getData = async () => {
       sentimentScore: true,
     },
   });
+
+  const sum = analyses.reduce((all, curr) => all + curr.sentimentScore, 0);
+  const avg = Math.round(sum / analyses.length);
+  return { analyses, avg };
 };
 
-const History = () => {
-  return <div>history</div>;
+const History = async () => {
+  const { avg, analyses } = await getData();
+  console.log(analyses);
+  return <div>history: {avg} </div>;
 };
 
 export default History;
