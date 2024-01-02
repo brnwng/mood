@@ -24,6 +24,11 @@ const parser = StructuredOutputParser.fromZodSchema(
       .describe(
         'a hexidecimal color code that represents the mood of the entry. Example #00ff00 is the color of happiness.',
       ),
+    sentimentScore: z
+      .number()
+      .describe(
+        'sentiment of the text and rated on a scale of -10 to 10, where -10 is extremely negative, 0 is netural, and 10 is extremely positive.',
+      ),
   }),
 );
 
